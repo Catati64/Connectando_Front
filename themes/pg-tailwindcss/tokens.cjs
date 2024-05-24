@@ -3,7 +3,7 @@
 /* prettier-disable */
 /* @ts-nocheck */
 
-const pg_colors = {
+export const pg_colors = {
   gray: {
     '50': '#edeff5',
     '100': '#cfd5e7',
@@ -214,7 +214,7 @@ const pg_colors = {
   },
 }
 
-const pg_fonts = {
+export const pg_fonts = {
   sans: ["'Inter', sans-serif",
   ],
   serif: ["'Kalam', sans-serif",
@@ -224,7 +224,7 @@ const pg_fonts = {
 const pg_font_urls = ['https://fonts.googleapis.com/css?family=Inter:100,200,300,400,500,600,700,800,900|Kalam:300,400,700&display=swap',
 ]
 
-const pg_backgrounds = {
+export const pg_backgrounds = {
   'design-image': "url('https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=1769&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
   'design-image-large': "url('https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=1769&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
 }

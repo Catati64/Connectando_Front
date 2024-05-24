@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import { heroImageUrl } from '@/utils/hero'
 
 const { optimizeImage } = useOptimizeImage()
@@ -7,39 +8,90 @@ const heroImageOptimized = {
   cover: true,
   ...optimizeImage(
     heroImageUrl,
-    /* options */
     {
-      /* If using local images instead of unsplash url, enable netlify provider */
-      // provider:
-      //     process.env.NODE_ENV === 'production'
-      //       ? 'netlify'
-      //       : null /* defaults to ipx or ipxStatic */,
-      placeholder: false, // placeholder image before the actual image is fully loaded.
+      placeholder: false,
     },
-    true /* return bgStyles */,
+    true,
   ),
 }
 
 const heroImage = heroImageOptimized.src
 const bgStyles = heroImageOptimized.bgStyles
+
+// Form state
+const tripType = ref('sencillo')
+const origin = ref('')
+const destination = ref('')
+const departureDate = ref('')
+const returnDate = ref('')
+const users = ref(1)
+const extraLuggage = ref(false)
 </script>
+
 <template>
-    <section>
-        <div class="bg-center bg-cover bg-no-repeat blur-none z-0" :style="bgStyles">
-            <!-- <div
-      class="bg-center bg-cover bg-no-repeat blur-none z-0 bg-design-image lg:bg-design-image-large"
-    > -->
-            <div class="pb-36 pt-2 px-6 relative rounded-3xl md:pb-48 lg:pb-72 lg:px-12">
-                <div class="-mx-4 flex flex-wrap items-center justify-center mt-24 space-y-6 lg:space-y-0">
-                    <div class="px-4 text-center w-full md:w-8/12 xl:w-6/12">
-                        <h3 class="font-bold font-serif mb-1 uppercase lg:capitalize dark:text-white text-black">
-              Aqui va a ir un menu bien shido siquesi </h3>
-                        <UButton label="Buscar Tours" to="/findTour" size="xl" trailing class="mt-4">
-</UButton>
-                    </div>
-                </div>
+  <section>
+    <div class="bg-center bg-cover bg-no-repeat blur-none z-0" :style="bgStyles">
+      <div class="pb-36 pt-2 px-6 relative rounded-3xl md:pb-48 lg:pb-72 lg:px-12">
+        <div class="-mx-4 flex flex-wrap items-center justify-center mt-24 space-y-6 lg:space-y-0">
+          <div class="px-4 text-center w-full md:w-8/12 xl:w-6/12">
+            <h3 class="font-bold font-serif mb-1 uppercase lg:capitalize dark:text-white text-black">
+              Bienvenido
+            </h3>
+            <p class="mb-4 dark:text-white text-black">
+              ¿A donde viajaremos hoy?
+            </p>
+            <div class="flex justify-center mb-6">
+              <button @click="tripType = 'redondo'" :class="tripType === 'redondo' ? 'bg-green-400 text-white' : 'bg-white text-black' " class="py-2 px-4 rounded-l-full">Redondo</button>
+              <button @click="tripType = 'sencillo'" :class="tripType === 'sencillo' ? 'bg-green-400 text-white' : 'bg-white text-black' " class="py-2 px-4 rounded-r-full">Sencillo</button>
             </div>
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+              <div class="mb-4">
+                <label class="block mb-2 text-black">Selecciona el origen</label>
+                <select v-model="origin" class="w-full p-2 border rounded dark:text-white">
+                  <option disabled value="">Selecciona el origen</option>
+                  <option value="ciudad1">Ciudad 1</option>
+                  <option value="ciudad2">Ciudad 2</option>
+                  <option value="ciudad3">Ciudad 3</option>
+                </select>
+              </div>
+              <div class="mb-4">
+                <label class="block mb-2 text-black">Selecciona el destino</label>
+                <select v-model="destination" class="w-full p-2 border rounded dark:text-white">
+                  <option disabled value="">Selecciona el destino</option>
+                  <option value="ciudad1">Ciudad 1</option>
+                  <option value="ciudad2">Ciudad 2</option>
+                  <option value="ciudad3">Ciudad 3</option>
+                </select>
+              </div>
+              <div class="flex space-x-4 mb-4">
+                <div class="w-1/2">
+                  <label class="block mb-2 text-black">Salida</label>
+                  <input v-model="departureDate" type="date" class="w-full p-2 border rounded dark:text-white" />
+                </div>
+                <div class="w-1/2" v-if="tripType === 'redondo'">
+                  <label class="block mb-2 text-black">Regreso</label>
+                  <input v-model="returnDate" type="date" class="w-full p-2 border rounded dark:text-white" />
+                </div>
+              </div>
+              <div class="mb-4">
+                <label class="block mb-2 text-black">Usuarios</label>
+                <input v-model.number="users" type="number" min="1" class="w-full p-2 border rounded dark:text-white" />
+              </div>
+              <div class="mb-6">
+                <label class="flex items-center space-x-2 text-black">
+                  <input v-model="extraLuggage" type="checkbox" />
+                  <span>Equipaje Extra</span>
+                </label>
+              </div>
+              <UButton label="Buscar Tours" to="/findTour" size="xl" trailing class="w-full bg-green-500 text-white rounded">
+                Buscar Tours
+              </UButton>
+            </div>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 </template>
+
 <style scoped></style>
