@@ -33,7 +33,7 @@ const bgStyles = heroImageOptimized.bgStyles
                 <div class="-mx-4 flex flex-wrap items-center justify-center mt-24 space-y-6 lg:space-y-0">
                     <div class="px-4 text-center w-full md:w-8/12 xl:w-6/12">
                         <h3 class="font-bold font-serif mb-1 uppercase lg:capitalize dark:text-white text-black">
-              OWO, QUE ES ESTO? </h3>
+              Aqui va a ir un menu bien shido siquesi </h3>
                         <UButton label="Buscar Tours" to="/findTour" size="xl" trailing class="mt-4">
 </UButton>
                     </div>

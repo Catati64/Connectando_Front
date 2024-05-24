@@ -4,7 +4,7 @@
 </script>
 <template>
   <div
-    class="flex flex-col justify-center sm:space-y-0 space-y-4 sm:flex sm:flex-row sm:items-center sm:space-x-4"
+    class="flex flex-col justify-center sm:space-y-0 space-y-4 sm:flex sm:flex-row sm:items-center sm:space-x-9"
   >
     <TheLogo class="mb-6 sm:hidden"></TheLogo>
     <ULink

@@ -1,11 +1,9 @@
 <script setup lang="ts">
-  import site from '@/site'
-  const { name, logo } = site
+import { logoSVGUrl } from '@/utils/logo'
 </script>
 <template>
-    <ULink data-pg-name="Logo" class="flex items-center sm:flex-row" to="/">
-        <UIcon :name="logo" class="text-4xl"></UIcon>
-        <h6 class="dark:text-white font-extrabold font-serif ml-2 mt-4 text-2xl text-black">{{ name }}</h6>
-    </ULink>
+  <ULink data-pg-name="Logo" class="flex items-center sm:flex-row" to="/">
+    <img :src=logoSVGUrl class="text-2xl" alt="logo" width="200" height="200" />
+  </ULink>
 </template>
 <style scoped></style>

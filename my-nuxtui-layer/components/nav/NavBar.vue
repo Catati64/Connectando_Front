@@ -13,11 +13,6 @@
             <div data-pg-name="NavBarPrimary" style="grid-area: primary-nav" class="hidden sm:flex">
                 <NavPrimary class="sm:w-full"/>
             </div>
-            <div data-pg-name="Searchbox" style="grid-area: search">
-                <UFormGroup hint="Optional">
-                    <UInput placeholder="Search..." size="md" trailing-icon="i-material-symbols-search-rounded" class="w-full"/>
-                </UFormGroup>
-            </div>
             <div data-pg-name="Profile" class="flex space-x-1">
                 <ProfileActions class="!hidden sm:!flex"/>
                 <NavSecondary/>
