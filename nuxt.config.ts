@@ -2,6 +2,7 @@
 // import presetIcons from '@unocss/preset-icons'
 
 import site from './site'
+import svgLoader from 'vite-plugin-vue-svg';
 const {
   name,
   description,
@@ -22,6 +23,9 @@ export default defineNuxtConfig({
 
   experimental: {
     componentIslands: true,
+  },
+  vite: {
+    plugins: [svgLoader()],
   },
 
   app: {

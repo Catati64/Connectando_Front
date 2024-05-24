@@ -234,7 +234,10 @@ const pg_background_urls = {
   'design-image-large': 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=1769&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
 }
 
-const logoURL = { 'logoURL': '@/assets/svg/logo.svg' }
+import logoSvg from '../../assets/svg/logo.svg';
+
+const logoURL = { 'logo-svg': logoSvg };
+
 
 module.exports = {
   pg_colors,
