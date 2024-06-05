@@ -22,6 +22,7 @@
     "format": "prettier --write \"**/*.{vue,js,jsx,cjs,mjs,ts,tsx,cts,mts,html,css,md,mdx,json}\" !public --ignore-path .gitignore"
   },
   "dependencies": {
+    "@dafcoe/vue-collapsible-panel": "^0.2.0",
     "@nuxtjs/svg": "^0.4.1",
     "@pinia/nuxt": "^0.4.11",
     "@vee-validate/nuxt": "^4.11.6",
@@ -30,7 +31,8 @@
     "pinia": "^2.1.6",
     "vite-plugin-svg": "^0.7.0",
     "vite-plugin-vue-svg": "^0.1.0",
-    "vue-moment": "^4.1.0"
+    "vue-moment": "^4.1.0",
+    "vue3-collapse": "^0.0.19"
   },
   "devDependencies": {
     "@iconify/json": "^2.2.96",

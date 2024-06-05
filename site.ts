@@ -20,7 +20,7 @@ export default {
   nav: [
     { text: 'Home', link: '/', type: 'primary', icon: 'i-mdi-home' },
     { text: 'Eventos y sitios', link: '/event', type: 'primary', icon: 'i-mdi-home' },
-    { text: 'Beneficios', link: '/benefits', type: 'primary', icon: 'i-mdi-home' },
+    { text: 'Consultar', link: '/consult', type: 'primary', icon: 'i-mdi-home' },
     {
       text: 'Ayuda',
       link: '/help-faqs',
@@ -34,20 +34,8 @@ export default {
       icon: 'i-mdi-home',
     },
     {
-      text: 'Order History',
-      link: '/order-history',
-      type: 'secondary',
-      icon: 'i-ic-baseline-history',
-    },
-    {
-      text: 'Returns',
-      link: '/returns',
-      type: 'secondary',
-      icon: 'i-material-symbols-assignment-return-outline-rounded',
-    },
-    {
-      text: 'Delivery Policy',
-      link: '/delivery-policy',
+      text: 'Anuncia un viaje',
+      link: '/new-trip',
       type: 'secondary',
       icon: 'i-tabler-truck-return',
     },
@@ -60,24 +48,6 @@ export default {
     {
       text: 'Help & FAQs',
       link: '/help-faqs',
-      type: 'secondary',
-      icon: 'i-material-symbols-contact-support-outline',
-    },
-    {
-      text: 'Find Tour',
-      link: '/findTour',
-      type: 'secondary',
-      icon: 'i-material-symbols-contact-support-outline',
-    },
-    {
-      text: 'buy Tour',
-      link: '/purchaseTicket',
-      type: 'secondary',
-      icon: 'i-material-symbols-contact-support-outline',
-    },
-    {
-      text: 'purchased Tour',
-      link: '/purchased-info',
       type: 'secondary',
       icon: 'i-material-symbols-contact-support-outline',
     },
