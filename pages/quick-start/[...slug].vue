@@ -34,7 +34,7 @@
           <UButton
             size="xs"
             class="ml-2"
-            color="secondary"
+            color="primary"
             :to="github"
             target="_blank"
             ><span>Aqui mero</span>

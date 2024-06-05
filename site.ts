@@ -63,5 +63,23 @@ export default {
       type: 'secondary',
       icon: 'i-material-symbols-contact-support-outline',
     },
+    {
+      text: 'Find Tour',
+      link: '/findTour',
+      type: 'secondary',
+      icon: 'i-material-symbols-contact-support-outline',
+    },
+    {
+      text: 'buy Tour',
+      link: '/purchaseTicket',
+      type: 'secondary',
+      icon: 'i-material-symbols-contact-support-outline',
+    },
+    {
+      text: 'purchased Tour',
+      link: '/purchased-info',
+      type: 'secondary',
+      icon: 'i-material-symbols-contact-support-outline',
+    },
   ],
 }

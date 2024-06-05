@@ -29,7 +29,8 @@
     "lite-youtube-embed": "^0.2.0",
     "pinia": "^2.1.6",
     "vite-plugin-svg": "^0.7.0",
-    "vite-plugin-vue-svg": "^0.1.0"
+    "vite-plugin-vue-svg": "^0.1.0",
+    "vue-moment": "^4.1.0"
   },
   "devDependencies": {
     "@iconify/json": "^2.2.96",
