@@ -19,14 +19,8 @@ export default {
   titleSeparator: '|', // default
   nav: [
     { text: 'Home', link: '/', type: 'primary', icon: 'i-mdi-home' },
-    { text: 'Eventos y sitios', link: '/event', type: 'primary', icon: 'i-mdi-home' },
-    { text: 'Beneficios', link: '/benefits', type: 'primary', icon: 'i-mdi-home' },
-    {
-      text: 'Ayuda',
-      link: '/help-faqs',
-      type: 'primary',
-      icon: 'i-mdi-home',
-    },
+    { text: 'Viajes', link: '/event', type: 'primary', icon: 'i-mdi-home' },
+    { text: 'Consultar', link: '/consult', type: 'primary', icon: 'i-mdi-home' },
     {
       text: 'About Us',
       link: '/quick-start',
@@ -34,20 +28,8 @@ export default {
       icon: 'i-mdi-home',
     },
     {
-      text: 'Order History',
-      link: '/order-history',
-      type: 'secondary',
-      icon: 'i-ic-baseline-history',
-    },
-    {
-      text: 'Returns',
-      link: '/returns',
-      type: 'secondary',
-      icon: 'i-material-symbols-assignment-return-outline-rounded',
-    },
-    {
-      text: 'Delivery Policy',
-      link: '/delivery-policy',
+      text: 'Anuncia un viaje',
+      link: '/new-trip',
       type: 'secondary',
       icon: 'i-tabler-truck-return',
     },

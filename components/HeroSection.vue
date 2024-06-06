@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import axios from 'axios'
+import { useRouter } from 'vue-router'
 import { heroImageUrl } from '@/utils/hero'
 
 const { optimizeImage } = useOptimizeImage()
@@ -18,15 +20,41 @@ const heroImageOptimized = {
 const heroImage = heroImageOptimized.src
 const bgStyles = heroImageOptimized.bgStyles
 
+const router = useRouter()
+
 // Form state
-const tripType = ref('sencillo')
+const tripType = ref('redondo')
 const origin = ref('')
 const destination = ref('')
 const departureDate = ref('')
 const returnDate = ref('')
 const users = ref(1)
 const extraLuggage = ref(false)
+
+const searchTours = async () => {
+  try {
+    const formData = {
+      departureCity: origin.value,
+      arrivalCity: destination.value,
+      departureDate: departureDate.value,
+      returnDate: tripType.value === 'redondo' ? returnDate.value : null,
+      isRounded: tripType.value === 'redondo' ? 1 : 0,
+      passangers: users.value,
+      extraluggage: extraLuggage.value ? 1 : 0
+    };
+    const response = await axios.post('http://localhost:3010/get-tikectInfo', formData);
+    
+    // Save form data and response data to localStorage
+    localStorage.setItem('formData', JSON.stringify(formData));
+    localStorage.setItem('ticketInfo', JSON.stringify(response.data));
+    
+    router.push({ name: 'findTour' });
+  } catch (error) {
+    console.error('Error fetching ticket info:', error);
+  }
+}
 </script>
+
 
 <template>
   <section>
@@ -41,41 +69,41 @@ const extraLuggage = ref(false)
               ¿A donde viajaremos hoy?
             </p>
             <div class="flex justify-center mb-6">
-              <button @click="tripType = 'redondo'" :class="tripType === 'redondo' ? 'bg-green-400 text-white' : 'bg-white text-black' " class="py-2 px-4 rounded-l-full">Redondo</button>
-              <button @click="tripType = 'sencillo'" :class="tripType === 'sencillo' ? 'bg-green-400 text-white' : 'bg-white text-black' " class="py-2 px-4 rounded-r-full">Sencillo</button>
+              <button @click="tripType = 'redondo'" :class="tripType === 'redondo' ? 'bg-green-400 text-black' : 'bg-white text-black'" class="py-2 px-4 rounded-l-full">Redondo</button>
+              <button @click="tripType = 'sencillo'" :class="tripType === 'sencillo' ? 'bg-green-400 text-black' : 'bg-white text-black'" class="py-2 px-4 rounded-r-full">Sencillo</button>
             </div>
             <div class="bg-white p-6 rounded-lg shadow-lg">
               <div class="mb-4">
                 <label class="block mb-2 text-black">Selecciona el origen</label>
-                <select v-model="origin" class="w-full p-2 border rounded dark:text-white">
+                <select v-model="origin" class="w-full p-2 border rounded">
                   <option disabled value="">Selecciona el origen</option>
-                  <option value="ciudad1">Ciudad 1</option>
-                  <option value="ciudad2">Ciudad 2</option>
-                  <option value="ciudad3">Ciudad 3</option>
+                  <option value="CDMX">CDMX</option>
+                  <option value="LEON">LEON</option>
+                  <option value="MONTERREY">MONTERREY</option>
                 </select>
               </div>
               <div class="mb-4">
                 <label class="block mb-2 text-black">Selecciona el destino</label>
-                <select v-model="destination" class="w-full p-2 border rounded dark:text-white">
+                <select v-model="destination" class="w-full p-2 border rounded">
                   <option disabled value="">Selecciona el destino</option>
-                  <option value="ciudad1">Ciudad 1</option>
-                  <option value="ciudad2">Ciudad 2</option>
-                  <option value="ciudad3">Ciudad 3</option>
+                  <option value="CDMX">CDMX</option>
+                  <option value="LEON">LEON</option>
+                  <option value="MONTERREY">MONTERREY</option>
                 </select>
               </div>
               <div class="flex space-x-4 mb-4">
                 <div class="w-1/2">
                   <label class="block mb-2 text-black">Salida</label>
-                  <input v-model="departureDate" type="date" class="w-full p-2 border rounded dark:text-white" />
+                  <input v-model="departureDate" type="date" class="w-full p-2 border rounded" />
                 </div>
                 <div class="w-1/2" v-if="tripType === 'redondo'">
                   <label class="block mb-2 text-black">Regreso</label>
-                  <input v-model="returnDate" type="date" class="w-full p-2 border rounded dark:text-white" />
+                  <input v-model="returnDate" type="date" class="w-full p-2 border rounded dark:text-black" />
                 </div>
               </div>
               <div class="mb-4">
-                <label class="block mb-2 text-black">Usuarios</label>
-                <input v-model.number="users" type="number" min="1" class="w-full p-2 border rounded dark:text-white" />
+                <label class="block mb-2  text-black">Usuarios</label>
+                <input v-model.number="users" type="number" min="1" class="w-full p-2 border rounded dark:text-black" />
               </div>
               <div class="mb-6">
                 <label class="flex items-center space-x-2 text-black">
@@ -83,7 +111,7 @@ const extraLuggage = ref(false)
                   <span>Equipaje Extra</span>
                 </label>
               </div>
-              <UButton label="Buscar Tours" to="/findTour" size="xl" trailing class="w-full bg-green-500 text-white rounded">
+              <UButton @click="searchTours" label="Buscar Tours" size="xl" trailing class="w-full bg-green-500 text-white rounded">
                 Buscar Tours
               </UButton>
             </div>

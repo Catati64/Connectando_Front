@@ -101,18 +101,18 @@ export const pg_colors = {
     '900': '#831843',
   },
   primary: {
-    '50': '#f3ecec',
-    '100': '#e7cecd',
-    '200': '#dab1ae',
-    '300': '#cc9490',
-    '400': '#bd7873',
-    '500': '#ad5b57',
-    '600': '#9b3e3d',
-    '700': '#8e3938',
-    '800': '#813433',
-    '900': '#742f2e',
-    '950': '#682a29',
-    DEFAULT: '#5c2524',
+    '50': '#ecfdf5',
+    '100': '#d1fae5',
+    '200': '#a7f3d0',
+    '300': '#6ee7b7',
+    '400': '#34d399',
+    '500': '#10b981',
+    '600': '#059669',
+    '700': '#047857',
+    '800': '#065f46',
+    '900': '#064e3b',
+    '950': '#29684a',
+    DEFAULT: '#245c55',
   },
   secondary: {
     '50': '#edebec',
@@ -234,9 +234,7 @@ const pg_background_urls = {
   'design-image-large': 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=1769&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
 }
 
-import logoSvg from '../../assets/svg/logo.svg';
-
-const logoURL = { 'logo-svg': logoSvg };
+const logoURL = { 'logo-svg': 'https://www.connectando.mx/img/logo.svg' };
 
 
 module.exports = {
