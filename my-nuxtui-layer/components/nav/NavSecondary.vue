@@ -1,7 +1,30 @@
 <script setup lang="ts">
-  const { navlinksSecondary } = useNav()
+import { ref, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
 
-  const dropdownItems = [
+const { navlinksSecondary } = useNav()
+const router = useRouter()
+
+const isLoggedIn = ref(false)
+const avatarUrl = ref('https://avatars.githubusercontent.com/u/73910005?v=4')
+const dropdownItems = ref([])
+
+onMounted(() => {
+  const token = localStorage.getItem('token')
+  const imgURL = localStorage.getItem('imgURL')
+
+  if (token) {
+    isLoggedIn.value = true
+    if (imgURL) {
+      avatarUrl.value = imgURL
+    }
+  }
+
+  updateDropdownItems()
+})
+
+const updateDropdownItems = () => {
+  dropdownItems.value = [
     [
       {
         slot: 'account',
@@ -15,9 +38,35 @@
         activeClass: 'text-primary',
         disabled: false
       })),
+      isLoggedIn.value
+        ? {
+            slot: 'logout',
+            label: 'Cerrar Sesión',
+            icon: 'i-mdi-logout',
+            onClick: logout,
+            disabled: false
+          }
+        : {
+            slot: 'login',
+            label: 'Sign In / Join Us',
+            icon: 'i-mdi-login',
+            onClick: () => router.push({ name: 'login' }),
+            disabled: false
+          }
     ],
   ]
+}
+
+const logout = () => {
+  localStorage.removeItem('token')
+  localStorage.removeItem('imgURL')
+  isLoggedIn.value = false
+  avatarUrl.value = 'https://avatars.githubusercontent.com/u/73910005?v=4'
+  updateDropdownItems()
+  router.push('/')
+}
 </script>
+
 <template>
   <UDropdown
     :popper="{ placement: 'bottom-start' }"
@@ -30,7 +79,7 @@
     :items="dropdownItems"
   >
     <UAvatar
-      src="https://avatars.githubusercontent.com/u/73910005?v=4"
+      :src="avatarUrl"
       alt="Avatar"
       size="lg"
       class="sm:ml-2"
@@ -38,9 +87,23 @@
     <template #account>
       <div class="my-1 space-x-1 w-full">
         <ProfileActions class="sm:!hidden" />
-        <UButton class="font-bold my-4 sm:my-2">Sign In / Join Us</UButton>
+        <UButton
+          v-if="isLoggedIn"
+          class="font-bold my-4 sm:my-2"
+          @click="logout"
+        >
+          Cerrar Sesión
+        </UButton>
+        <UButton
+          v-else
+          class="font-bold my-4 sm:my-2"
+          @click="() => router.push({ name: 'login' })"
+        >
+          Sign In / Join Us
+        </UButton>
       </div>
     </template>
   </UDropdown>
 </template>
+
 <style scoped></style>

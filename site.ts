@@ -19,14 +19,8 @@ export default {
   titleSeparator: '|', // default
   nav: [
     { text: 'Home', link: '/', type: 'primary', icon: 'i-mdi-home' },
-    { text: 'Eventos y sitios', link: '/event', type: 'primary', icon: 'i-mdi-home' },
+    { text: 'Viajes', link: '/event', type: 'primary', icon: 'i-mdi-home' },
     { text: 'Consultar', link: '/consult', type: 'primary', icon: 'i-mdi-home' },
-    {
-      text: 'Ayuda',
-      link: '/help-faqs',
-      type: 'primary',
-      icon: 'i-mdi-home',
-    },
     {
       text: 'About Us',
       link: '/quick-start',
