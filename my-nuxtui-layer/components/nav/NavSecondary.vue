@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, watch } from 'vue'
 import { useRouter } from 'vue-router'
 
 const { navlinksSecondary } = useNav()
@@ -9,7 +9,7 @@ const isLoggedIn = ref(false)
 const avatarUrl = ref('https://avatars.githubusercontent.com/u/73910005?v=4')
 const dropdownItems = ref([])
 
-onMounted(() => {
+const checkSession = () => {
   const token = localStorage.getItem('token')
   const imgURL = localStorage.getItem('imgURL')
 
@@ -18,9 +18,20 @@ onMounted(() => {
     if (imgURL) {
       avatarUrl.value = imgURL
     }
+  } else {
+    isLoggedIn.value = false
+    avatarUrl.value = 'https://avatars.githubusercontent.com/u/73910005?v=4'
   }
 
   updateDropdownItems()
+}
+
+onMounted(() => {
+  checkSession()
+})
+
+watch(() => localStorage.getItem('token'), () => {
+  checkSession()
 })
 
 const updateDropdownItems = () => {

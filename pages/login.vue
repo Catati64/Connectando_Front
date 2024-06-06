@@ -41,9 +41,10 @@ const submitForm = async () => {
         email: form.value.email,
         password: form.value.password
       })
-      const { token, imgURL } = response.data
+      const { token, imgURL, email } = response.data
       localStorage.setItem('token', token)
       localStorage.setItem('imgURL', imgURL)
+      localStorage.setItem('userId', email)
       router.push('/')
     } catch (error) {
       console.error(error)

@@ -30,9 +30,14 @@ const router = useRouter()
 
 onMounted(() => {
   const storedPurchaseData = localStorage.getItem('purchaseData')
+  const userIdStored = localStorage.getItem('userId')
 
   if (storedPurchaseData) {
     purchaseData.value = JSON.parse(storedPurchaseData)
+  }
+
+  if (userIdStored !== 'undefined') {
+    form.email = userIdStored
   }
 })
 

@@ -3,12 +3,14 @@ import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 
 const purchaseInfo = ref<any>(null)
+const ticketid = ref<any>(null)
 const route = useRoute()
 
 onMounted(() => {
     const storedPurchasedInfoData = localStorage.getItem('purchaseinfo')
     if (storedPurchasedInfoData) {
         purchaseInfo.value = JSON.parse(storedPurchasedInfoData).purchase.buy
+        ticketid.value = JSON.parse(storedPurchasedInfoData).purchase.ticketId
     }
 })
 </script>
@@ -26,7 +28,7 @@ onMounted(() => {
       <p><strong>passengers:</strong> {{ purchaseInfo.passengers }}</p>
       <p><strong>tripId:</strong> {{ purchaseInfo.tripId }}</p>
       <p v-if="purchaseInfo.tripIdReturn "><strong>tripIdReturn:</strong> {{ purchaseInfo.tripIdReturn }}</p>
-      <!-- Agrega más información según sea necesario -->
+      <p class="text-2xl font-bold mb-4">{{ticketid}} &LT;-- ANOTA ESTA CLAVE, ES TU TICKET PARA SUBIR AL BUS</p>
     </div>
   </section>
 </template>
